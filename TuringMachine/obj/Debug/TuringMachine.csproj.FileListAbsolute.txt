@@ -1,0 +1,17 @@
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\bin\Debug\TuringMachine.exe.config
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\bin\Debug\TuringMachine.exe
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\bin\Debug\TuringMachine.pdb
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine.csprojResolveAssemblyReference.cache
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\Resources\Style.baml
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\MainWindow.g.cs
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\App.g.cs
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine_Content.g.cs
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine_MarkupCompile.cache
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine_MarkupCompile.lref
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\App.baml
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\MainWindow.baml
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine.g.resources
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine.Properties.Resources.resources
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine.csproj.GenerateResource.Cache
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine.exe
+c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine.pdb

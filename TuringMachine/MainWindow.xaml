@@ -1,0 +1,132 @@
+﻿<Window x:Class="TuringMachine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TuringMachine"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1000" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="#2c2c2c" Loaded="Window_Loaded" MouseDown="Window_MouseDown" StateChanged="Window_StateChanged">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.9*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.ColumnSpan="2" LastChildFill="False" Background="Black">
+            <Button Content="&#xf057;" Template="{DynamicResource WindowButton}" DockPanel.Dock="Right" Background="Black" Foreground="White" Click="Close"/>
+            <Button x:Name="MaximizeButton" Content="&#xf096;" Template="{DynamicResource WindowButton}" DockPanel.Dock="Right" Background="Black" Foreground="White" Click="Maximize"/>
+            <Button Content="&#xf147;" Template="{DynamicResource WindowButton}" DockPanel.Dock="Right" Background="Black" Foreground="White" Click="Minimize"/>
+        </DockPanel>
+
+        <StackPanel Grid.ColumnSpan="2" Grid.Row="1" Margin="25,0" VerticalAlignment="Center">
+            <TextBox x:Name="Strip" Text="" FontSize="35" FontWeight="Light" Background="Transparent" BorderThickness="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" VerticalContentAlignment="Center">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="#48569E" Opacity="0.7"></SolidColorBrush>
+                </TextBlock.Foreground>
+            </TextBox>
+            <ItemsControl x:Name="StripSymbols" HorizontalAlignment="Right" Width="950">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding}" Padding="0" FontSize="35" FontWeight="Light" Background="Transparent" HorizontalAlignment="Left">
+                            <Label.Foreground>
+                                <SolidColorBrush Color="#48569E" Opacity="0.7"/>
+                            </Label.Foreground>
+                        </Label>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+
+            <DockPanel Height="20" VerticalAlignment="Center" >
+                <Canvas>
+                    <Polygon x:Name="Head" Points="10,0 20,20, 0,20">
+                        <Polygon.Fill>
+                            <SolidColorBrush Color="#FC6042" Opacity="0.7"></SolidColorBrush>
+                        </Polygon.Fill>
+                    </Polygon>
+                </Canvas>
+            </DockPanel>
+        </StackPanel>
+
+        <!--Editor-->
+        <RichTextBox Grid.Row="2" x:Name="Editor" Padding="15" FontFamily="\Resources\Exo\#Exo" Background="#1c1c1c" BorderThickness="0" Foreground="White"></RichTextBox>
+
+        <!--Errors List-->
+        <ScrollViewer  Grid.Column="0" Grid.Row="2" x:Name="ErrorsScrollBar" Margin="50,200" VerticalScrollBarVisibility="Auto" Visibility="Collapsed">
+            <ItemsControl x:Name="ErrorsList">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel LastChildFill="False">
+                            <Label Content="{Binding Line}">
+                                <Label.Foreground>
+                                    <SolidColorBrush Color="#FC6042" Opacity="0.7"></SolidColorBrush>
+                                </Label.Foreground>
+                            </Label>
+                            <Label Content="{Binding ErrorMessage}">
+                                <Label.Foreground>
+                                    <SolidColorBrush Color="#FC6042" Opacity="0.7"></SolidColorBrush>
+                                </Label.Foreground>
+                            </Label>
+                        </DockPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!--Current State and Condition-->
+        <Label Grid.Row="2" Grid.Column="1" Content="Current State" FontSize="15" FontFamily="\Resources\Exo\#Exo" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+            <Label.Foreground>
+                <SolidColorBrush Color="#FC6042" Opacity="0.7"></SolidColorBrush>
+            </Label.Foreground>
+        </Label>
+        <Label Grid.Row="2" Grid.Column="1" x:Name="CurrentState" Content="0" Margin="0,25,0,0" FontSize="17" FontFamily="\Resources\Exo\#Exo" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+            <Label.Foreground>
+                <SolidColorBrush Color="#FC6042" Opacity="0.7"></SolidColorBrush>
+            </Label.Foreground>
+        </Label>
+        <Label Grid.Row="2" Grid.Column="1" Content="Current Condition" Margin="0,75,0,0" FontSize="11" FontFamily="\Resources\Exo\#Exo" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+            <Label.Foreground>
+                <SolidColorBrush Color="#48569E" Opacity="0.7"></SolidColorBrush>
+            </Label.Foreground>
+        </Label>
+        <Label Grid.Row="2" Grid.Column="1" x:Name="CurrentCondition" Content="1" Margin="0,100,0,0" FontSize="17" FontFamily="\Resources\Exo\#Exo" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+            <Label.Foreground>
+                <SolidColorBrush Color="#48569E" Opacity="0.7"></SolidColorBrush>
+            </Label.Foreground>
+        </Label>
+
+        <!--Run,Reset And Debug Buttons-->
+        <DockPanel Grid.Row="3" Margin="25,0,0,0" LastChildFill="False" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Button x:Name="Run" Content="Run" Margin="0,0,15,0" Template="{DynamicResource MainButtonTemplate}" Background="Black" Foreground="White" Click="Run_Click"></Button>
+            <Button x:Name="Reset" Content="Reset" Margin="0,0,15,0" Template="{DynamicResource MainButtonTemplate}" Background="Black" Foreground="White" Click="Reset_Click"></Button>
+            <Button x:Name="Debug" Content="Debug" Template="{DynamicResource DebugButtonTemplate}" Foreground="Black" Click="Debug_Click">
+                <Button.Background>
+                    <SolidColorBrush Color="#FCB941" Opacity="0.7"></SolidColorBrush>
+                </Button.Background>
+            </Button>
+        </DockPanel>
+
+        <DockPanel Grid.Row="0">
+            <Menu Background="Transparent" VerticalAlignment="Bottom" Margin="0,10,0,0" Foreground="White">
+                <MenuItem Header="Help" Foreground="White" Template="{DynamicResource MenuItemStyle}">
+                    <MenuItem HorizontalAlignment="Left" Background="Black" BorderThickness="0" Click="Syntax">
+                        <MenuItem.Header>
+                            <Label Content="Syntax" Foreground="White"></Label>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+
+    </Grid>
+</Window>
