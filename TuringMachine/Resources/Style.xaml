@@ -4,7 +4,7 @@
     <Color A="100" R="252" G="185" B="65" x:Key="DebugButtonColor"/>
 
     <ControlTemplate x:Key="WindowButton" TargetType="Button">
-        <Border Height="35" Width="40" BorderThickness="0" Background="{TemplateBinding Background}" TextBlock.Foreground="{TemplateBinding Foreground}" TextBlock.FontSize="15" TextBlock.FontFamily="c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\Resources\Font Awesome\#FontAwesome">
+        <Border Height="35" Width="40" BorderThickness="0" Background="{TemplateBinding Background}" TextBlock.Foreground="{TemplateBinding Foreground}" TextBlock.FontSize="15" TextBlock.FontFamily="\Resources\Font Awesome\#FontAwesome">
             <ContentPresenter RecognizesAccessKey="True" VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
         </Border>
         <ControlTemplate.Triggers>
@@ -38,7 +38,7 @@
     </ControlTemplate>
 
     <ControlTemplate x:Key="MainButtonTemplate" TargetType="Button">
-        <Border Padding="15,5" BorderThickness="0" Background="{TemplateBinding Background}" TextBlock.Foreground="{TemplateBinding Foreground}" TextBlock.FontSize="19" TextBlock.FontFamily="c:\users\aren\documents\visual studio 2015\Projects\TuringMachine\TuringMachine\Resources\Exo\#Exo">
+        <Border Padding="15,5" BorderThickness="0" Background="{TemplateBinding Background}" TextBlock.Foreground="{TemplateBinding Foreground}" TextBlock.FontSize="19" TextBlock.FontFamily="\Resources\Exo\#Exo">
             <ContentPresenter RecognizesAccessKey="True" VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
         </Border>
         <ControlTemplate.Triggers>

@@ -31,7 +31,6 @@ namespace TuringMachine
         private List<int> _codeLines = new List<int>();
         private List<TuringSyntaxError> _errors = new List<TuringSyntaxError>();
         ObservableCollection<TuringSyntaxError> _errorsItemSource = new ObservableCollection<TuringSyntaxError>();
-        private double _editorHeight = 0;
         private ObservableCollection<string> _strip = new ObservableCollection<string>();
         private List<string> _lines = new List<string>();
         private string[] _cmd = { };
@@ -125,9 +124,8 @@ namespace TuringMachine
             ErrorsList.ItemsSource = _errorsItemSource; // Show Errors List;
 
             // Animate RichTextBox (Editor);
-            Editor.Height = _editorHeight;
             Editor.VerticalAlignment = VerticalAlignment.Top;
-            DoubleAnimation animation = new DoubleAnimation(_editorHeight / 3, new Duration(TimeSpan.FromSeconds(0.3)));
+            DoubleAnimation animation = new DoubleAnimation(500 / 3, new Duration(TimeSpan.FromSeconds(0.3)));
             animation.Completed += (_sender, _e) =>
             {
                 ErrorsScrollBar.Visibility = Visibility.Visible;
@@ -378,8 +376,6 @@ namespace TuringMachine
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             RandomStrip();
-            Editor.Height = Editor.ActualHeight;
-            _editorHeight = Editor.ActualHeight;
             _timer.Interval = TimeSpan.FromMilliseconds(100);
             _timer.Tick += (s, eArgs) =>
             {
@@ -398,7 +394,7 @@ namespace TuringMachine
                         {
                             Label label = (Label)VisualTreeHelper.GetChild(content, y);
 
-                            if (label.Content == _strip[_head] || _strip[_head] == " ")
+                            if (label.Content.ToString() == _strip[_head] || _strip[_head] == " ")
                             {
                                 Point labelPosition = label.TransformToAncestor(StripSymbols).Transform(new Point(0, 0));
                                 headAnimation.To = labelPosition.X;
@@ -522,7 +518,6 @@ namespace TuringMachine
                 Compile();
                 Run.IsEnabled = false;
                 Editor.IsReadOnly = true;
-                _editorHeight = Editor.ActualHeight;
 
                 if (_lines.Count > 0 && _errors.Count == 0)
                 {
@@ -568,7 +563,7 @@ namespace TuringMachine
             Head.RenderTransform = headTransform;
             headTransform.BeginAnimation(TranslateTransform.XProperty, headAnimation);
 
-            DoubleAnimation animation = new DoubleAnimation(_editorHeight, new Duration(TimeSpan.FromSeconds(0.3)));
+            DoubleAnimation animation = new DoubleAnimation(500, new Duration(TimeSpan.FromSeconds(0.3)));
             Editor.BeginAnimation(HeightProperty, animation);
         }
 
@@ -603,7 +598,7 @@ namespace TuringMachine
                             {
                                 Label label = (Label)VisualTreeHelper.GetChild(content, y);
 
-                                if (label.Content == _strip[_head] || _strip[_head] == " ")
+                                if (label.Content.ToString() == _strip[_head] || _strip[_head] == " ")
                                 {
                                     Point labelPosition = label.TransformToAncestor(StripSymbols).Transform(new Point(0, 0));
                                     headAnimation.To = labelPosition.X;

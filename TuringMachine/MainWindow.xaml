@@ -59,7 +59,7 @@
         </StackPanel>
 
         <!--Editor-->
-        <RichTextBox Grid.Row="2" x:Name="Editor" Padding="15" FontFamily="\Resources\Exo\#Exo" Background="#1c1c1c" BorderThickness="0" Foreground="White"></RichTextBox>
+        <RichTextBox Grid.Row="2" x:Name="Editor" Height="500" Padding="15" FontFamily="\Resources\Exo\#Exo" Background="#1c1c1c" BorderThickness="0" Foreground="White"></RichTextBox>
 
         <!--Errors List-->
         <ScrollViewer  Grid.Column="0" Grid.Row="2" x:Name="ErrorsScrollBar" Margin="50,200" VerticalScrollBarVisibility="Auto" Visibility="Collapsed">
